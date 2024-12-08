@@ -2,6 +2,7 @@ package com.marlo.orders.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.marlo.orders.entity.Order;
+import com.marlo.orders.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class OrderConsumer {
 
-    //private final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @KafkaListener(topics = "#{@environment.getProperty('spring.kafka.template.default-topic')}", groupId ="1")
