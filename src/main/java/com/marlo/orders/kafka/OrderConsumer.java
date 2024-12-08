@@ -32,6 +32,7 @@ public class OrderConsumer {
             order.setValidated(true);
             order.setValidationDate(LocalDate.now());
 
+            orderRepository.save(order);
         } catch (Exception e) {
             System.out.println("Failed to deserialize message: " + jsonMessage);
         }
